@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "804388569540",
+    "project_id": "bank-statement-ml",
+    "storage_bucket": "bank-statement-ml.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804388569540:android:3803345ba8bcad0fb0e491",
+        "android_client_info": {
+          "package_name": "me.micheltlutz.bankstatement"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC32eqsEg_GT1U-VgpUOqSQLjXLriMT8Pc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

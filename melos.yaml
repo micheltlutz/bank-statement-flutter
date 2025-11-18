@@ -1,0 +1,49 @@
+name: bank_statement_modular
+repository: https://github.com/micheltlutz/bank-statement-modular
+
+packages:
+  - packages/**
+  - app
+
+scripts:
+  analyze:
+    run: flutter analyze
+    description: Run `flutter analyze` in all packages.
+  
+  test:
+    run: flutter test
+    description: Run `flutter test` in all packages.
+  
+  build:core:
+    run: flutter pub get && flutter analyze
+    packageFilters:
+      - packages/core
+    description: Build and analyze core package.
+  
+  build:network:
+    run: flutter pub get && flutter analyze
+    packageFilters:
+      - packages/network
+    description: Build and analyze network package.
+  
+  build:auth:
+    run: flutter pub get && flutter analyze
+    packageFilters:
+      - packages/auth
+    description: Build and analyze auth package.
+  
+  build:balance:
+    run: flutter pub get && flutter analyze
+    packageFilters:
+      - packages/balance
+    description: Build and analyze balance package.
+  
+  build:statement:
+    run: flutter pub get && flutter analyze
+    packageFilters:
+      - packages/statement
+    description: Build and analyze statement package.
+  
+  validate:dependencies:
+    run: melos exec -- "flutter pub get"
+    description: Validate all package dependencies.

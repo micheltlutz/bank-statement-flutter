@@ -1,0 +1,25 @@
+name: network
+description: Network package with HTTP client and interceptors
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  core:
+    path: ../core
+  dio: ^5.4.3+1
+  retrofit: ^4.0.3
+  json_annotation: ^4.8.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  build_runner: ^2.4.8
+  retrofit_generator: ^8.0.6
+  json_serializable: ^6.7.1
+
