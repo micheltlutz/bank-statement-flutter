@@ -40,6 +40,27 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<void> createUser({
+    required String userId,
+    required String password,
+    required String fullName,
+    required DateTime birthDate,
+  }) async {
+    try {
+      await remoteDataSource.createUser(
+        userId: userId,
+        password: password,
+        fullName: fullName,
+        birthDate: birthDate,
+      );
+    } on AppException {
+      rethrow;
+    } catch (e) {
+      throw AuthenticationException('Failed to create user: ${e.toString()}');
+    }
+  }
+
+  @override
   Future<void> logout() async {
     await localDataSource.deleteToken();
   }

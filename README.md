@@ -257,18 +257,47 @@ melos run build:statement
 ## 📚 Documentação
 
 - [Arquitetura](docs/ARCHITECTURE.md) - Visão geral da arquitetura modular
+- [API Documentation](docs/API_DOCUMENTATION.md) - Documentação completa da API
 - [Code Style Guide](docs/CODE_STYLE_GUIDE.md) - Padrões de código e convenções
 - [Project Setup](docs/PROJECT_SETUP.md) - Configurações detalhadas do projeto
 - [Build Optimization](docs/BUILD_OPTIMIZATION.md) - Otimizações de build
 - [ProGuard/R8](docs/PROGUARD_R8.md) - Proteção de código e otimização
 - [Troubleshooting](docs/TROUBLESHOOTING.md) - Solução de problemas comuns
 
-## API
+## 🔌 API
 
 Base URL: `https://dev-challenge.micheltlutz.me`
 
-Endpoints:
-- `POST /auth/` - Login
-- `GET /statements/` - Lista de extratos
+### Endpoints Principais
+
+**Públicos (Não requerem autenticação):**
+- `POST /auth/` - Login e obtenção de token
+- `GET /health-check` - Verificação de status
+- `POST /users/` - Criação de usuário
+- `POST /contact/` - Envio de contato
+
+**Protegidos (Requerem Bearer Token):**
+- `GET /statements/` - Lista de extratos (com paginação: `skip`, `limit`)
 - `GET /balance/` - Saldo calculado
+- `POST /statement/` - Criar extrato
+- `GET /generate-random-statement/{n}` - Gerar extratos aleatórios
+- `PUT /users/{user_id}` - Atualizar usuário
+
+### Autenticação
+
+Todas as rotas de extratos e saldo requerem autenticação via **Bearer Token**:
+
+```
+Authorization: Bearer <access_token>
+```
+
+O token é obtido através do endpoint `POST /auth/` e armazenado de forma segura no dispositivo.
+
+### Segurança
+
+✅ **Verificação realizada**: Todas as rotas de extratos possuem `security: [HTTPBearer]` no schema OpenAPI  
+✅ **Não há bypass de autenticação**: Todas as rotas protegidas requerem token válido  
+✅ **Implementação correta**: O projeto usa `AuthInterceptor` para adicionar o token automaticamente
+
+📖 **Documentação completa**: Veja [docs/API_DOCUMENTATION.md](docs/API_DOCUMENTATION.md) para detalhes completos da API
 
